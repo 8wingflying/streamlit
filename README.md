@@ -1,4 +1,10 @@
 ## 🧠 一、streamlit
+
+**Streamlit** 是 Python 的開源框架，用於快速建立資料與機器學習應用程式。  
+它的宗旨是讓開發者「用最少的程式碼、最快速地」把資料科學專案轉成可互動的網頁應用。
+
+---
+
 - 範例 https://streamlit.io/gallery
 - 第三方套件 Components  https://streamlit.io/components
 - [Build powerful generative AI apps](https://streamlit.io/generative-ai)
@@ -6,9 +12,6 @@
 - API reference  https://docs.streamlit.io/develop/api-reference
 
 ---
-
-**Streamlit** 是 Python 的開源框架，用於快速建立資料與機器學習應用程式。  
-它的宗旨是讓開發者「用最少的程式碼、最快速地」把資料科學專案轉成可互動的網頁應用。
 
 ### ✨ 特點 (Key Features)
 
