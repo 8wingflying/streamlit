@@ -1,3 +1,5 @@
+## 延伸閱讀
+- 初探 Langchain 與 LLM：打造簡易問診機器人
 ## 🧠 一、streamlit
 
 **Streamlit** 是 Python 的開源框架，用於快速建立資料與機器學習應用程式。  
@@ -185,6 +187,54 @@ st.pyplot(fig)
 ```
 
 ---
+
+## Streamlit LaTeX 範例
+
+```python
+import streamlit as st
+
+st.title("🧮 Streamlit LaTeX 範例展示 (LaTeX Examples)")
+
+st.header("1️⃣ 基本公式")
+st.latex(r"E = mc^2")
+st.latex(r"a^2 + b^2 = c^2")
+
+st.header("2️⃣ 分數與開根號")
+st.latex(r"\frac{a}{b} = \frac{1}{2}")
+st.latex(r"x = \sqrt{y}")
+
+st.header("3️⃣ 微分與積分表示式")
+st.latex(r"\frac{d}{dx} e^x = e^x")
+st.latex(r"\int_0^\infty e^{-x^2} dx = \frac{\sqrt{\pi}}{2}")
+
+st.header("4️⃣ 向量與矩陣")
+st.latex(r"\vec{v} = \begin{bmatrix} 1 \\ 2 \\ 3 \end{bmatrix}")
+st.latex(r"A = \begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix}")
+
+st.header("5️⃣ 機器學習常見公式")
+st.latex(r"\hat{y} = \sigma(Wx + b)")
+st.latex(r"L = -\sum_{i=1}^{n} y_i \log(\hat{y_i})")
+
+st.header("6️⃣ 內嵌於文字")
+st.write("線性迴歸模型可表示為：", r"$y = wx + b$")
+st.markdown("邏輯迴歸的 Sigmoid 函數：$\\sigma(x) = \\frac{1}{1 + e^{-x}}$")
+
+```
+
+#### **進階應用：LaTeX 與互動控制元件整合
+- 你甚至可以用互動式 Slider 來顯示動態公式，例如：
+```python
+import streamlit as st
+import math
+
+st.title("📈 動態 LaTeX 範例 (Interactive LaTeX Example)")
+
+x = st.slider("選擇 x 值", 0, 10, 5)
+st.latex(fr"y = x^2 = {x}^2 = {x**2}")
+```
+
+這樣使用者拖動滑桿時，公式會即時更新。
+
 
 ## ☁️ 七、部署與分享 (Deployment & Sharing)
 
