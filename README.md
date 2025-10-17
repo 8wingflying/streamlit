@@ -4,3 +4,178 @@
 - [Build powerful generative AI apps](https://streamlit.io/generative-ai)
 - Playground  https://streamlit.io/playground
 - API reference  https://docs.streamlit.io/develop/api-reference
+
+## ⚙️ 二、安裝與啟動 (Installation & Run)
+
+```bash
+# 安裝 Streamlit
+pip install streamlit
+
+# 啟動應用
+streamlit run app.py
+```
+
+執行 `streamlit run app.py` 後，瀏覽器會自動開啟應用頁面（預設埠為 `localhost:8501`）。
+
+---
+
+## 🧩 三、核心功能與常用指令 (Core Components)
+
+| 模組 | 功能說明 | 範例 |
+|------|-----------|------|
+| `st.title()` | 顯示標題 | `st.title("AI 儀表板")` |
+| `st.write()` | 顯示文字、DataFrame、圖片 | `st.write(df)` |
+| `st.text_input()` | 文字輸入 | `name = st.text_input("請輸入姓名")` |
+| `st.slider()` | 數值滑桿 | `age = st.slider("選擇年齡", 0, 100, 25)` |
+| `st.selectbox()` | 下拉選單 | `opt = st.selectbox("選擇模型", ["SVM", "LSTM"])` |
+| `st.button()` | 建立按鈕 | `if st.button("執行"): run()` |
+| `st.sidebar` | 側邊欄設計 | `st.sidebar.slider("設定參數")` |
+| `st.line_chart()` | 折線圖 | `st.line_chart(data)` |
+| `st.bar_chart()` | 長條圖 | `st.bar_chart(data)` |
+| `st.file_uploader()` | 上傳檔案 | `file = st.file_uploader("上傳 CSV")` |
+| `st.map()` | 地圖視覺化 | `st.map(df)` |
+
+---
+
+## 📊 四、資料視覺化範例 (Data Visualization Example)
+
+```python
+import streamlit as st
+import pandas as pd
+import numpy as np
+
+st.title("📊 資料視覺化範例 (Visualization Example)")
+
+df = pd.DataFrame({
+    "x": np.arange(1, 101),
+    "y": np.random.randn(100).cumsum()
+})
+
+chart_type = st.radio("選擇圖表類型", ["折線圖", "長條圖", "散點圖"])
+
+if chart_type == "折線圖":
+    st.line_chart(df, x="x", y="y")
+elif chart_type == "長條圖":
+    st.bar_chart(df, x="x", y="y")
+else:
+    st.scatter_chart(df, x="x", y="y")
+
+st.success("✅ 圖表生成完成！")
+```
+
+---
+
+## 🧭 五、互動式控制元件 (Interactive Widgets)
+
+```python
+st.header("🎮 互動控制範例 (Interactive Example)")
+
+name = st.text_input("請輸入您的名字")
+age = st.slider("選擇年齡", 1, 100, 25)
+agree = st.checkbox("我同意條款")
+
+if st.button("送出"):
+    st.write(f"👋 你好 {name}！你的年齡是 {age} 歲。")
+    if agree:
+        st.success("感謝您的同意！")
+```
+
+---
+
+## 🤖 六、與機器學習模型整合 (Integration with ML Models)
+
+本章節展示如何使用 Streamlit 結合 **Scikit-learn** 與 **Hugging Face Transformers**，打造互動式 AI 推論應用。
+
+---
+
+### 🔹 6.1 Scikit-learn 範例：Iris 花分類互動式預測 (Iris Classifier Demo)
+
+```python
+import streamlit as st
+import pandas as pd
+from sklearn.datasets import load_iris
+from sklearn.ensemble import RandomForestClassifier
+
+st.title("🌼 Iris 花分類模型 (Scikit-learn Demo)")
+
+iris = load_iris()
+X = pd.DataFrame(iris.data, columns=iris.feature_names)
+y = iris.target
+
+model = RandomForestClassifier()
+model.fit(X, y)
+
+st.sidebar.header("請輸入花朵特徵")
+sepal_length = st.sidebar.slider("Sepal length (cm)", 4.0, 8.0, 5.1)
+sepal_width  = st.sidebar.slider("Sepal width (cm)", 2.0, 5.0, 3.5)
+petal_length = st.sidebar.slider("Petal length (cm)", 1.0, 7.0, 1.4)
+petal_width  = st.sidebar.slider("Petal width (cm)", 0.1, 2.5, 0.2)
+
+input_data = [[sepal_length, sepal_width, petal_length, petal_width]]
+prediction = model.predict(input_data)
+pred_class = iris.target_names[prediction[0]]
+
+st.subheader("🌸 預測結果 (Prediction Result)")
+st.write(f"模型預測為： **{pred_class}**")
+```
+
+---
+
+### 🔹 6.2 Hugging Face Transformers 範例：文字情感分析 (Sentiment Analysis)
+
+```python
+import streamlit as st
+from transformers import pipeline
+
+st.title("💬 文字情感分析 (Hugging Face Demo)")
+
+sentiment_pipeline = pipeline("sentiment-analysis")
+text = st.text_area("請輸入文字：", "這部電影非常好看！")
+
+if st.button("分析情感"):
+    result = sentiment_pipeline(text)[0]
+    st.write(f"🔍 標籤：**{result['label']}**")
+    st.write(f"📈 信心分數：**{result['score']:.2f}**")
+```
+
+---
+
+### 🔹 6.3 AI 模型可視化與解釋範例 (Model Explainability with SHAP)
+
+```python
+import streamlit as st
+import pandas as pd
+import shap
+import matplotlib.pyplot as plt
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.datasets import load_iris
+
+st.title("📈 模型可解釋性分析 (SHAP + Streamlit)")
+
+iris = load_iris()
+X = pd.DataFrame(iris.data, columns=iris.feature_names)
+y = iris.target
+
+model = RandomForestClassifier()
+model.fit(X, y)
+
+explainer = shap.TreeExplainer(model)
+shap_values = explainer.shap_values(X)
+
+fig, ax = plt.subplots()
+shap.summary_plot(shap_values, X, plot_type="bar", show=False)
+st.pyplot(fig)
+```
+
+---
+
+## ☁️ 七、部署與分享 (Deployment & Sharing)
+
+| 部署方式 | 指令 / 說明 |
+|-----------|-------------|
+| **本地端執行** | `streamlit run app.py` |
+| **Streamlit Cloud** | [https://streamlit.io/cloud](https://streamlit.io/cloud) 上傳 GitHub 專案 |
+| **Docker** | 建立 Dockerfile 並執行 `docker build` |
+| **雲端平台** | 可於 AWS、GCP、Azure 託管 |
+
+---
