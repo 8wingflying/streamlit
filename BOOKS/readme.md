@@ -11,7 +11,7 @@
   - [Python FastAPI 構建數據科學應用](https://www.tenlong.com.tw/products/9787512437814?list_name=srh)
   - https://github.com/PacktPublishing/Building-Data-Science-Applications-with-FastAPI-Second-Edition
 - FastAPI Cookbook: Develop high-performance APIs and web applications with Python
-- FastAPI Cookbook: Develop high-performance APIs and web applications with Python
+- Hands-On APIs for AI and Data Science: Python Development with Fastapi 
 - Building Python Microservices with FastAPI
   - [利用 FastAPI 構建 Python 微服務](https://www.tenlong.com.tw/products/9787302644866?list_name=srh)
 
