@@ -221,7 +221,7 @@ st.markdown("邏輯迴歸的 Sigmoid 函數：$\\sigma(x) = \\frac{1}{1 + e^{-x}
 
 ```
 
-#### **進階應用：LaTeX 與互動控制元件整合
+#### 進階應用：LaTeX 與互動控制元件整合
 - 你甚至可以用互動式 Slider 來顯示動態公式，例如：
 ```python
 import streamlit as st
