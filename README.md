@@ -1,9 +1,21 @@
-# streamlit
+## 🧠 一、streamlit
 - 範例 https://streamlit.io/gallery
 - 第三方套件 Components  https://streamlit.io/components
 - [Build powerful generative AI apps](https://streamlit.io/generative-ai)
 - Playground  https://streamlit.io/playground
 - API reference  https://docs.streamlit.io/develop/api-reference
+
+**Streamlit** 是 Python 的開源框架，用於快速建立資料與機器學習應用程式。  
+它的宗旨是讓開發者「用最少的程式碼、最快速地」把資料科學專案轉成可互動的網頁應用。
+
+### ✨ 特點 (Key Features)
+
+- 🧩 僅需 Python，無需 HTML、CSS、JS
+- ⚙️ 自動更新頁面，所見即所得
+- 🧠 可結合機器學習模型（Scikit-learn、TensorFlow、PyTorch、Hugging Face）
+- 🚀 支援雲端部署（Streamlit Cloud / Docker / AWS）
+
+---
 
 ## ⚙️ 二、安裝與啟動 (Installation & Run)
 
