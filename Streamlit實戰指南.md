@@ -165,14 +165,52 @@ e = RuntimeError("example of error")
 st.exception(e)
 ```
 
-## Chapter 1 
+## Chapter 1  Central Limit Theorem app
 ```python
+import streamlit as st 
+import numpy as np 
+import matplotlib.pyplot as plt 
 
+st.title('Illustrating the Central Limit Theorem with Streamlit') 
+st.subheader('An App by XXXXXX') 
+st.write(('This app simulates a thousand coin flips using the chance of heads input below,'  
+'and then samples with replacement from that population and plots the histogram of the' 
+' means of the samples, in order to illustrate the Central Limit Theorem!')) 
+
+
+perc_heads = st.number_input(label='Chance of Coins Landing on Heads', min_value=0.0, max_value=1.0, value=.5) 
+binom_dist = np.random.binomial(1, perc_heads, 1000) 
+
+list_of_means = [] 
+for i in range(0, 1000): 
+    list_of_means.append(np.random.choice(binom_dist, 100, replace=True).mean()) 
+
+fig, ax = plt.subplots() 
+ax = plt.hist(list_of_means) 
+
+st.pyplot(fig) 
 ```
 
-## Chapter 1 
+## Chapter 1  clt_app|/example.py
 ```python
+import streamlit as st   
+import numpy as np   
+import matplotlib.pyplot as plt  
 
+with st.form('first form'):
+	perc_heads = st.number_input(label='Chance of Coins Landing on Heads', min_value=0.0, 	max_value=1.0, value=.5)  
+	graph_title = st.text_input(label='Graph Title') 
+	my_submit_button = st.form_submit_button()
+
+binom_dist = np.random.binomial(1, perc_heads, 1000)  
+list_of_means = []  
+for i in range(0, 1000):
+	list_of_means.append(np.random.choice(binom_dist, 100, replace=True).mean())  
+
+fig, ax = plt.subplots()  
+plt.hist(list_of_means, range=[0,1]) 
+plt.title(graph_title) 
+st.pyplot(fig) 
 ```
 
 ## ch4
@@ -227,7 +265,75 @@ if analyze_button:
     st.write(sentiment)
 ```
 
+#### Chapter 2: Uploading, Downloading, and Manipulating Data
+- penguin_app
+```python
+
+import altair as alt
+import pandas as pd
+import seaborn as sns
+import streamlit as st
+
+st.title("Palmer's Penguins")
+st.markdown("Use this Streamlit app to make your own scatterplot about penguins!")
+
+selected_x_var = st.selectbox(
+    "What do you want the x variable to be?",
+    ["bill_length_mm", "bill_depth_mm", "flipper_length_mm", "body_mass_g"],
+)
+selected_y_var = st.selectbox(
+    "What about the y?",
+    ["bill_depth_mm", "bill_length_mm", "flipper_length_mm", "body_mass_g"],
+)
+
+penguin_file = st.file_uploader("Select Your Local Penguins CSV")
+if penguin_file is not None:
+    penguins_df = pd.read_csv(penguin_file)
+else:
+    st.stop()
+
+alt_chart = (
+    alt.Chart(penguins_df, title="Scatterplot of Palmer's Penguins")
+    .mark_circle()
+    .encode(
+        x=selected_x_var,
+        y=selected_y_var,
+        color="species",
+    )
+    .interactive()
+)
+st.altair_chart(alt_chart, use_container_width=True)
+
+```
+
 ##
+```python
+import streamlit as st
+
+st.title('My To-Do List Creator')
+
+if 'my_todo_list' not in st.session_state:
+    st.session_state.my_todo_list = ["Buy groceries", "Learn Streamlit", "Learn Python"]
+
+new_todo = st.text_input("What do you need to do?")
+if st.button('Add the new To-Do item'):
+    st.write('Adding a new item to the list')
+    st.session_state.my_todo_list.append(new_todo)
+
+st.write('My To-Do list is:', st.session_state.my_todo_list)
+```
+
+## Chapter 3: Data Visualization
+```python
+
+```
+
+##
+```python
+
+```
+## Chapter 4: Using Machine Learning with Streamlit
+- https://github.com/tylerjrichards/Streamlit-for-Data-Science/tree/main/penguin_ml
 ```python
 
 ```
@@ -237,15 +343,66 @@ if analyze_button:
 
 ```
 
-##
-```python
-
-```
 
 ##
 ```python
 
 ```
+
+
+##
+```python
+
+```
+
+
+##
+```python
+
+```
+
+
+##
+```python
+
+```
+
+
+##
+```python
+
+```
+
+
+##
+```python
+
+```
+
+
+##
+```python
+
+```
+
+
+##
+```python
+
+```
+
+
+##
+```python
+
+```
+
+
+##
+```python
+
+```
+
 
 ##
 ```python
