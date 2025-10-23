@@ -1,9 +1,4 @@
-##
-- pip install streamlit tensorflow pillow matplotlib
-```python
-# 📘 Streamlit × CNN Advanced Demo  
-**含 Accuracy/Loss 訓練曲線與進度條**
-
+## 📘 Streamlit × CNN Advanced Demo 
 此範例展示如何在 **Streamlit** 中：
 - 訓練 CNN 模型（TensorFlow / Keras）
 - 動態顯示訓練過程曲線（Accuracy / Loss）
@@ -12,10 +7,10 @@
 
 ---
 
-## 🧠 範例程式碼
-
+- pip install streamlit tensorflow pillow matplotlib
+- 程式碼
 ```python
-# app_advanced.py
+
 import streamlit as st
 import tensorflow as tf
 from tensorflow.keras import layers, models
